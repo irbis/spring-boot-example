@@ -56,6 +56,13 @@
         	<artifactId>spring-boot-starter-security</artifactId>
         </dependency>  -->
         
+        <!-- To simplify development -->
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-devtools</artifactId>
+        	<optional>true</optional>
+        </dependency>
+        
         <!-- Unit tests support -->
         <dependency>
         	<groupId>org.springframework.boot</groupId>
