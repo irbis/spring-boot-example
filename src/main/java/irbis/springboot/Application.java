@@ -23,14 +23,21 @@ public class Application extends WebMvcConfigurerAdapter {
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.authorizeRequests().anyRequest().fullyAuthenticated().and()
+			http
+				.authorizeRequests()
+				.antMatchers("/aboutus").permitAll()
+				.anyRequest().fullyAuthenticated()
+				.and()
 			.formLogin()
 				.loginPage("/login")
 				.loginProcessingUrl("/login")
-				.failureUrl("/login?error").permitAll().and()
-			.logout().
-				logoutUrl("/logout")
-				.logoutSuccessUrl("/login?logout").permitAll();
+				.failureUrl("/login?error")
+				.permitAll()
+				.and()
+			.logout()
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/login?logout")
+				.permitAll();
 		}
 
 		@Override
