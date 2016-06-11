@@ -2,18 +2,23 @@ package irbis.springboot.web;
 
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @Controller
 public class ExampleMVCController {
 	
+	@Autowired
+	private MessageSource messageSource;
+	
 	@RequestMapping("/mvc")
 	public String mvc(Map<String, Object> model) {
-		String message = "MVC Hello World!";
 		
-		model.put("message", message);
+		model.put("message", messageSource.getMessage(
+				"messages.mvc.helloworld", null, LocaleContextHolder.getLocale()));
 		
 		return "mvc-view";
 	}
