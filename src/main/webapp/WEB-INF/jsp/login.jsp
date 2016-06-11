@@ -8,11 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
 </head>
-<body onLoad="document.f.username.focus();">
+<body onLoad="document.getElementById('f').username.focus();">
 
-<form id="f" name="form" action="/login" method="POST">
-	<c:if test="${not empty msg}"><p>${msg}</p></c:if>
-	<c:if test="${not empty error}"><p>${error}</p></c:if>
+<c:if test="${param.logout ne null}">
+	<p>You have successfully logout!</p>
+</c:if>
+<c:if test="${param.error ne null}">
+	<p>Username or password is incorrect!</p>
+</c:if>
+
+<form id="f" name="form" action="<c:url value='/login'/>" method="POST">
 	<fieldset>
 			Username: <input type="text" name="username" value="" /><br/>
 			Password: <input type="password" name="password"/><br/>

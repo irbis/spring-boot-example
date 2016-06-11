@@ -11,8 +11,7 @@
 </head>
 <body>
 
-<c:url value="/logout" var="logoutUrl"/>
-<form action="${logoutUrl}" method="POST" id="logoutForm">
+<form action="<c:url value='/logout'/>" method="POST" id="logoutForm">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
 
@@ -20,4 +19,9 @@ Welcome : ${pageContext.request.userPrincipal.name} | <a href="javascript:formSu
 <hr/>
 ${message}
 </body>
+<script type="text/javascript">
+	function formSubmit() {
+		document.getElementById("logoutForm").submit();
+	}
+</script>
 </html>
